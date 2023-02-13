@@ -12,6 +12,15 @@
     />
   </head>
   <body>
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <div id="root">
       <nav id="main-nav" class="sidebar">
         <a href="/index.html" onclick="route()">Home</a>
@@ -26,3 +35,4 @@
     <script src="js/router.js"></script>
   </body>
 </html>
+
